@@ -30,7 +30,7 @@
           </div>
 
         </div>
-
+        <!-- article contents  images -->
         <div class="article-in article-images js__article-image">
           <div class="article-holder">
             <? if ($page->children()->_gallery) : ?>
