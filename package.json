@@ -1,6 +1,6 @@
 {
   "name": "kontora",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "author": "Rusty Key <iam@stfoo.ru>",
   "private": true,
   "devDependencies": {
