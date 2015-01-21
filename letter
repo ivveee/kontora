@@ -1,0 +1,13 @@
+Архив положил на дропбокс: https://www.dropbox.com/s/eccrbzpy1dww8xi/kontora.zip?dl=0
+
+Для разработчика:
+сайт работает на движке kirby: http://getkirby.com/
+
+фронтэнд собирается гулпом: http://gulpjs.com/
+$ npm install # для установки зависимостей гулпа
+$ bower install # для установки зависимостей фронтенда
+$ gulp dev # запуск вотчера (автоматически пересобирает css и js при изменениях)
+
+$ gulp styles # сборка стилей
+$ gulp browserify # сборка своих скриптов
+$ gulp bower # сборка скриптов библиотек
