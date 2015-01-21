@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'Littera';
+    src: url('../fonts/litteraregular.eot');
+    src: url('../fonts/litteraregular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/litteraregular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Littera';
+    src: url('../fonts/litteramedium.eot');
+    src: url('../fonts/litteramedium.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/litteramedium.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Littera';
+    src: url('../fonts/litterabold.eot');
+    src: url('../fonts/litterabold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/litterabold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+$font-main: Littera, Arial, sans-serif;
+
+$icons: sprite-map("sprite/*.png", $spacing: 10px);
+$icons_r: sprite-map("sprite_r/*.png", $spacing: 10px);
+$duration: 0.3s;
+
+$color-hex: #00f;
+$color-rgb: rgb(12, 40, 255);
+$color-rgba: rgba(12, 40, 255, .8);
+
+@mixin image-size($path){
+  width: image-width($path);
+  height: image-height($path);
+}
+@mixin sized-sprite($map, $sprite){
+  background: sprite($map, $sprite) no-repeat;
+  @include image-size(sprite-file($map, $sprite));
+}
+@mixin bgs($sprite) {
+  background: sprite($icons, $sprite) no-repeat;
+  // @media (-webkit-min-device-pixel-ratio: 2), (min-resoultion: 192dpi) {
+  //   background: sprite($icons_r, $sprite) no-repeat;
+  //   $ypos: round(nth(sprite-position($icons_r, $sprite), 2) / 2);
+  //     background-position: 0 $ypos;
+  //     @include background-size(ceil(image-width(sprite-path($icons_r)) / 2), ceil(image-height(sprite-path($icons_r)) / 2));
+  // }
+}
+@mixin sbgs($sprite) {
+  @include sized-sprite($icons, $sprite);
+  // @media (-webkit-min-device-pixel-ratio: 2), (min-resoultion: 192dpi) {
+  //   background: sprite($icons_r, $sprite) no-repeat;
+  //   $ypos: round(nth(sprite-position($icons_r, $sprite), 2) / 2);
+  //     background-position: 0 $ypos;
+  //     @include background-size(ceil(image-width(sprite-path($icons_r)) / 2), ceil(image-height(sprite-path($icons_r)) / 2));
+  // }
+}
+
+// responsive
+$break-1: 478px;
+$break-2: 630px;
+$break-3: 1024px;
+@mixin respond-to($media) {
+  @if $media == sm {
+    @media only screen and (max-width: $break-1) { @content; }
+  }
+  @if $media == mob {
+    @media only screen and (max-width: $break-2) { @content; }
+  }
+  @if $media == tablet {
+    @media only screen and (max-width: $break-3) { @content; }
+  }
+  @elseif $media == desktop {
+    @media only screen and (min-width: $break-3 + 1) { @content; }
+  }
+}
+
+@mixin retina() {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      @content;
+  }
+}
+
+@mixin placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+@mixin animation($prop: opacity, $t1: .3s, $t2: .1s) {
+  transition: $prop $t1;
+  &:hover {
+    transition-duration: $t2;
+  }
+}
+
+@mixin clear {
+  &:before {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
