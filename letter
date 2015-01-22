@@ -19,9 +19,9 @@ bower - примерно то же и самое, но не отслеживае
         тут используется для установки библиотек для нужд сайта
 gulp - вроде make для фронтенда. В gulpfile.js лежат инструкции по сборке различных компонентов сайта.
        тут gulp bower собирает все что скачал bower и записывает в libs.js и libs.css (последний не используется)
-           gulp styles компилирует стили из s.scss и кладет в s.css использует компилятор compass
+           gulp styles компилирует стили из s.scss и кладет в s.css использует компилятор compass. 
            gulp browserify сшивает все *.js перечисленные в assets/scripts/app/app.js и кладет их в assets/scripts/app.js
-                           интереснейшим образом в assets/scripts/app/app.js есть директива lib/ui.js - jQuery.js
+                           интереснейшим образом в assets/scripts/app/app.js есть директива lib/ui.js - jQuery UI
                            почему она не загружается через bower?
 
 На проде удивительным образом две библиотеки, которые должны загружаться через bower -- modernizr и собственно jquery
