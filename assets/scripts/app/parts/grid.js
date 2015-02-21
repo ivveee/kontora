@@ -13,26 +13,30 @@ $(function() {
   // puts current status to cookie
   $swText.on('click', function() {
     $('body').addClass(CLASS_TEXT);
-    $.cookie('switcher', 'text', { path: '/' });
+    $.cookie('switcher', 'textPosition', { path: '/' });
     // if ($article.length) $article.trigger('text');
     return false;
   });
   $swImg.on('click', function() {
     $('body').removeClass(CLASS_TEXT);
-    $.cookie('switcher', 'image', { path: '/' });
+    $.cookie('switcher', 'imagePosition', { path: '/' });
     // if ($article.length) $article.trigger('image');
     return false;
   });
 
   // processes current cookie 
-  if ($.cookie('switcher') === 'text') {
+  if ($.cookie('switcher') === 'textPosition') {
     $swText.trigger('click');
   }
-  if ($.cookie('switcher') === 'image') {
+  if ($.cookie('switcher') === 'imagePosition') {
     $swImg.trigger('click');
   }
 
+  // The idea is that text and images "float" on the background
+  // as background is clicked we fall back to home page
+  // So grid objects should show "cursor:pointer" imitating a link
   // parse kirbytext'ed text, wrapping text between br's with <span>
+  // set cursor style to text because 
   $('.js__article-holder p').contents().filter(function(){
     return this.nodeType === 3;
   }).wrap('<span class="js__article-text-spanned" style = "cursor:text"/>');

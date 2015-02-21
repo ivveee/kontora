@@ -652,6 +652,7 @@ body.rt .switcher_text {
   box-shadow: 3px 3px 10px rgba(12, 40, 255, 0.8);
   color: #00f;
   opacity: 0;
+  cursor: url('../images/cursor_white.png?1424430312'), auto;
   -webkit-transition: opacity .3s;
           transition: opacity .3s;
 }

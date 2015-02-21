@@ -179,6 +179,7 @@ a {
   box-shadow: 3px 3px 10px $colorRgba;
   color: $colorHex;
   opacity: 0;
+  cursor:image-url('cursor_white.png'),auto;
   transition: opacity .3s;
   .item:hover & {
     box-shadow: 5px 5px 10px $colorRgba;
