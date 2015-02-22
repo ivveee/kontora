@@ -36,16 +36,15 @@ $(function() {
   // as background is clicked we fall back to home page
   // So grid objects should show "cursor:pointer" imitating a link
   // parse kirbytext'ed text, wrapping text between br's with <span>
-  // set cursor style to text because 
   $('.js__article-holder p').contents().filter(function(){
     return this.nodeType === 3;
-  }).wrap('<span class="js__article-text-spanned" style = "cursor:text"/>');
+  }).wrap('<span class="js__article-text-spanned"/>');
   // if anything outside div is clicked - getting back to home
   $('.js__article-box').on('click', function(e){
     e.stopPropagation();
     //set to "return to home" to everything except text and image and header wrapped in dt and dd
     if( !($(e.target).hasClass('js__article-text-spanned') || $(e.target).is('img') || 
-          $(e.target).is('dt') || $(e.target).is('dd') ) ) { // horrific. to be changed.
+          $(e.target).is('dt') || $(e.target).is('dd') ) ) { 
         window.location.href = "/";
     }
   });
@@ -55,7 +54,7 @@ $(function() {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  // as is
+  // as is -- turned off
   function logoReposition() {
     $('.logo').css({
       'background-position': getRandomInt(-10, 110) + '% 50%'
@@ -81,6 +80,8 @@ $(function() {
       CLASS_STILL = 'is__still';
 
     function recalc() {
+                  //alert("recalc");
+
       windowWidth = $grid.width();
       windowHeight = $grid.height();
       // itemWidth = parseInt(windowWidth/COLS);
@@ -89,19 +90,50 @@ $(function() {
       maxOffsetY = windowHeight - itemHeight - 61;
     }
 
-    function rearrange(force) {
+    // rearranges items using getRandomInt
+    function rearrange(force, type) {
+      var alpha = 0;
+      var rad = maxOffsetY*0.6;
       $items.each(function() {
+        alpha+=Math.PI/8;
+        rad-=10;
+        //read data from cookies
         var id = $(this).attr('id'),
-          offsetLeft = $.cookie(id + '_left'),
+          offsetLeft = $.cookie(id + '_left'), // ATTNT! In percent of window
           offsetTop = $.cookie(id + '_top');
+        //if there isn't data get a random
         if (!offsetLeft || force) {
-          offsetLeft = getRandomInt(0, maxOffsetX)/windowWidth * 100;
+          var  offsetLeft = getRandomInt(0, maxOffsetX)/windowWidth * 100;
+          if (type === "spyral")
+            offsetLeft = (maxOffsetX/2 + Math.sin(alpha)*rad)/windowWidth * 100;
           $.cookie(id + '_left', offsetLeft, { expires: 1 });
         }
-        if (!offsetLeft || force) {
-          offsetTop = getRandomInt(0, maxOffsetY)/(windowHeight - 61) * 100;
+        if (!offsetTop || force) {
+          offsetTop = getRandomInt(0, maxOffsetY)/windowHeight * 100;
+          if (type === "spyral")
+            var offsetTop = ((maxOffsetY)/2 + Math.cos(alpha)*rad)/windowHeight * 100;
           $.cookie(id + '_top', offsetTop, { expires: 1 });
         }
+        $(this).css({
+          width: itemWidth,
+          left: offsetLeft + '%',
+          top: offsetTop + '%'
+        });
+      });
+    }
+
+        // rearranges items spyral
+    function rearrangeSpyral() {
+      var alpha=0;
+      var rad=maxOffsetY*0.6;
+      $items.each(function() {
+        var id = $(this).attr('id');
+        var offsetLeft = (maxOffsetX/2 + Math.sin(alpha)*rad)/windowWidth * 100;
+        $.cookie(id + '_left', offsetLeft, { expires: 1 });
+        var offsetTop = ((maxOffsetY)/2 + Math.cos(alpha)*rad)/windowHeight * 100;
+        $.cookie(id + '_top', offsetTop, { expires: 1 });
+        alpha+=Math.PI/8;
+        rad-=5;
         $(this).css({
           width: itemWidth,
           left: offsetLeft + '%',
@@ -135,12 +167,17 @@ $(function() {
       }
     });
 
-    // rearranges thumbnails on SPACE. Doesn't work
+    // rearranges thumbnails on SPACE
     $(document).on('keydown', function(e) {
       if (e.keyCode == 32) {
-        rearrange();
+        rearrange(true);      
+      }
+
+      if (e.keyCode == 83) {
+        rearrange(true,"spyral");        
       }
     })
+
     $rearranger.on('click', function(e) {
       e.preventDefault();
       rearrange(true);

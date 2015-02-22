@@ -41,326 +41,357 @@ a {
     opacity: 1;
   }
 }
+//--------------------Header
 .header {
-  position: fixed;
+  position: fixed; // ATTNT
   top: 0;
   left: 0; right: 0;
   padding: 10px 20px;
   background: #fff;
   min-width: 650px;
 }
-.social {
-  float: right;
-  font-size: 25px;
-}
-.social-item {
-  text-decoration: none;
-}
-.info {
-  display: inline-block;
-  margin-right: 18px;
-  vertical-align: top;
-  font-size: 11px;
-  line-height: .95;
-  font-weight: bold;
-  &:last-child {
-    margin-right: 0;
+  //Social links
+  .social {
+    float: right;
+    font-size: 25px;
   }
-  a {
-    border-bottom: 1px solid #2c41fc;
-    text-decoration: none;
-    &:hover {
-      // border-bottom-color: $colorRgb;
+    .social-item {
+      text-decoration: none;
+    }
+  //Info - Name, Address, mail
+  .info {
+    display: inline-block;
+    margin-right: 18px;
+    vertical-align: top;
+    font-size: 11px;
+    line-height: .95;
+    font-weight: bold;
+    &:last-child {
+      margin-right: 0;
+    }
+    a {
+      border-bottom: 1px solid #2c41fc;
+      text-decoration: none;
+      &:hover {
+        // border-bottom-color: $colorRgb;
+      }
     }
   }
-}
-.info-header {
-  margin: 0 0 1px;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-weight: bold;
-  font-size: 1.3em;
-  a {
-    border-bottom-width: 2px;
-    line-height: 1.05;
+    .info-header {
+      margin: 0 0 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-weight: bold;
+      font-size: 1.3em;
+      a {
+        border-bottom-width: 2px;
+        line-height: 1.05;
+        display: inline-block;
+      }
+    }
+  //Language
+  .lang {
     display: inline-block;
+    margin-top: 3px;
   }
-}
-.lang {
-  display: inline-block;
-  margin-top: 3px;
-}
-.lang-item {
-  display: inline-block;
-  line-height: 30px;
-  border: 2px solid;
-  text-decoration: none;
-  width: 43px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  margin-right: .25em;
-  &:last-child {
-    margin-right: 0;
+    .lang-item {
+      display: inline-block;
+      line-height: 30px;
+      border: 2px solid;
+      text-decoration: none;
+      width: 43px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      margin-right: .25em;
+      &:last-child {
+        margin-right: 0;
+      }
+      &.is__active {
+        color: #000;
+      }
+    }
+  //Switchers Panel
+  .switchers {
+    display: inline-block;
+    margin-top: 3px;
+    vertical-align: middle;
   }
-  &.is__active {
-    color: #000;
-  }
-}
-.switchers {
-  display: inline-block;
-  margin-top: 3px;
-  vertical-align: middle;
-}
-.switcher {
-  display: inline-block;
-  margin-right: 18px;
-  cursor: pointer;
-  width: 43px;
-  height: 34px;
-  background-size: 100% auto;
-}
-.switcher_image {
-  background-image: image-url('icon_home.png');
-  body.rt & {
-    background-image: image-url('icon_home_a.png');
-  }
-}
-.switcher_text {
-  background-image: image-url('icon_text_a.png');
-  body.rt & {
-    background-image: image-url('icon_text.png');
-  }
-}
-
+    .switcher {
+      display: inline-block;
+      margin-right: 18px;
+      cursor: pointer;
+      width: 43px;
+      height: 34px;
+      background-size: 100% auto;
+    }
+      .switcher_image {
+        background-image: image-url('icon_home.png');
+        body.rt & {
+          background-image: image-url('icon_home_a.png');
+        }
+      }
+      .switcher_text {
+        background-image: image-url('icon_text_a.png');
+        body.rt & {
+          background-image: image-url('icon_text.png');
+        }
+      }
+//----------------------Content block for grid and project page
+//It's children are always fixed that is why it's height collapses to 0
 .content {
-
+  // No such thing as .index
   .index & {
     position: fixed;
     top: 90px; right: 0; bottom: 0; left: 0;
   }
 }
-.item:nth-child(1) { top: 0; left: 70%;}
-.item:nth-child(2) { top: 0; left: 80%; }
-.item:nth-child(3) { top: 10%; left: 80%; }
-.item:nth-child(4) { top: 30%; left: 10%; }
-.item:nth-child(5) { top: 40%; left: 30%; }
-.item:nth-child(6) { top: 50%; left: 50%; }
-.item:nth-child(7) { top: 60%; left: 70%; }
-.item:nth-child(8) { top: 80%; left: 30%; }
-.item {
-  position: absolute;
-  display: block;
-  // width: 10%;
-  // height: 10%;
-  box-sizing: border-box;
-  // padding: 5px;
-  text-align: center;
-  // background: #fff;
-  transition-duration: .2s;
-  transition-property: top, left;
-  & > span {
+//---------Grid
+  //Items within item class (oh my f god the guy teaches at the institue)
+  //This simulates randomness
+  .item:nth-child(1) { top: 0; left: 70%;}
+  .item:nth-child(2) { top: 0; left: 80%; }
+  .item:nth-child(3) { top: 10%; left: 80%; }
+  .item:nth-child(4) { top: 30%; left: 10%; }
+  .item:nth-child(5) { top: 40%; left: 30%; }
+  .item:nth-child(6) { top: 50%; left: 50%; }
+  .item:nth-child(7) { top: 60%; left: 70%; }
+  .item:nth-child(8) { top: 80%; left: 30%; }
+  //Item (=thumbnail)
+  .item {
     position: absolute;
-    backface-visibility: hidden;
-  }
-  &:hover {
-    z-index: 100;
-  }
-  &.is__still {
-    transition: none;
-  }
-}
-.item-title {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  box-shadow: 3px 3px 10px $colorRgba;
-  color: $colorHex;
-  opacity: 0;
-  cursor:image-url('cursor_white.png'),auto;
-  transition: opacity .3s;
-  .item:hover & {
-    box-shadow: 5px 5px 10px $colorRgba;
-  }
-  span {
-    display: table;
-    width: 100%;
-    height: 100%;
-    b {
-      display: table-cell;
-      width: 100%;
-      height: 100%;
-      vertical-align: middle;
-      // display: inline-block;
-      // vertical-align: middle;
+    display: block;
+    // width: 10%;
+    // height: 10%;
+    box-sizing: border-box;
+    // padding: 5px;
+    text-align: center;
+    // background: #fff;
+    transition-duration: .2s;
+    transition-property: top, left;
+    //oh my god! he uses perspective to switch modes
+    & > span {
+      position: absolute;
+      backface-visibility: hidden;
+    }
+    &:hover {
+      z-index: 100;
+    }
+    &.is__still {
+      transition: none;
     }
   }
-  .rt & {
-    opacity: 1;
-  }
-}
-@mixin trbl($size) {
-  top: $size; right: $size; bottom: $size; left: $size;
-}
-.item-image {
-  @include trbl(0);
-  bottom: -1px;
-  overflow: hidden;
-  background-position: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: opacity .3s;
-  .rt & {
-    opacity: 0;
-  }
-  img {
-    display: block;
-    min-width: 100%;
-    min-height: 100%;
-    vertical-align: middle;
-  }
-}
-img.item-image {
-  display: block;
-  width: 100%;
-  box-shadow: 3px 3px 10px $colorHex;
-  .item:hover & {
-    box-shadow: 5px 5px 10px $colorHex;
-  }
-}
-
+    //Title part of item - blue text in front of a white background
+    .item-title {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      box-shadow: 3px 3px 10px $colorRgba;
+      color: $colorHex;
+      opacity: 0;
+      cursor:image-url('cursor_white.png'),auto;
+      //animation of opacity
+      transition: opacity .3s;
+      .item:hover & {
+        box-shadow: 5px 5px 10px $colorRgba;
+      }
+      //name of the item
+      //table withe the size of all box
+      //and the cell the size of fhole table
+      span {
+        display: table;
+        width: 100%;
+        height: 100%;
+        b {
+          display: table-cell;
+          width: 100%;
+          height: 100%;
+          vertical-align: middle;
+        }
+      }
+      //rt is included in styles when "text mode" is clicked. This sets item-title opacity to 1 
+      //hiding image and leaving item-title visible
+      .rt & {
+        opacity: 1;
+      }
+    }
+    @mixin trbl($size) {
+      top: $size; right: $size; bottom: $size; left: $size;
+    }
+    //Image part of item
+    .item-image {
+      @include trbl(0);
+      bottom: -1px;
+      overflow: hidden;
+      background-position: 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: opacity .3s;
+      .rt & {
+        opacity: 0;
+      }
+      img {
+        display: block;
+        min-width: 100%;
+        min-height: 100%;
+        vertical-align: middle;
+      }
+    }
+    // no idea!
+    img.item-image {
+      display: block;
+      width: 100%;
+      box-shadow: 3px 3px 10px $colorHex;
+      .item:hover & {
+        box-shadow: 5px 5px 10px $colorHex;
+      }
+    }
+//---------Project page
+// article wrapper
 .article-box {
-  position: fixed;
-  top: 61px;
+  position: fixed; // ATTNT
+  top: 61px;       // position 
   bottom: 0;
   left: 0; right: 0;
   overflow: scroll;
   padding: 0 150px;
   cursor: pointer;
 }
-.article {
+  .article {
 
-  margin: 0;
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-  h1 {
-    font-size: 1em;
-    margin: .5em 0;
-    font-weight: normal;
-  }
-  p {
-    margin: 0 0 .5em;
-  }
-  img {
-    display: block;
-    margin: 1em 0;
-    max-width: 100%;
-    max-height: 90vh;
-    box-shadow: 5px 5px 10px $colorHex;
-    &:first-child {
-      margin-top: 0;
+    margin: 0;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    h1 {
+      font-size: 1em;
+      margin: .5em 0;
+      font-weight: normal;
+    }
+    p {
+      margin: 0 0 .5em;
+    }
+    img {
+      display: block;
+      margin: 1em 0;
+      max-width: 100%;
+      max-height: 90vh;
+      box-shadow: 5px 5px 10px $colorHex;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    .article-holder {
+      max-width: 960px;
+      img {
+        cursor: default;
+      }
     }
   }
-  .article-holder {
-    max-width: 960px;
+    // sets cursor of images in "image mode" to default as it doesn't function as link
+    // everything else does
+    //.article-holder img {
+    //    cursor: default;
+    //  }
+  // "back" button on background but doesn't work
+  .article-home {
+    position: absolute;
+    top: 0; right: 0; left: 0;
+    height: 100%;
+    z-index: 1;
   }
-}
-
-.article-holder img {
-    cursor: default;
-  }
-
-.article-home {
-  position: absolute;
-  top: 0; right: 0; left: 0;
-  height: 100%;
-  z-index: 1;
-}
 // .article-box {
 //   position: relative;
 //   height: 100%;
 //   overflow: auto;
 //   margin: 0 150px 0 150px;
 // }
-.article-navbox {
-  margin: 0 0 30px;
-  @include clear;
-  width: 490px;
-  text-align: justify;
-  &:after {
-    content: '';
-    display: inline-block;
-    width: 100%;
-  }
-}
-.article-nav {
-  text-decoration: none;
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: bold;
-  border-bottom: 2px solid $colorHex;
-  line-height: 19px;
-  text-align: left;
-  display: inline-block;
-}
+// //no such thing
+// .article-navbox {
+//   margin: 0 0 30px;
+//   @include clear;
+//   width: 490px;
+//   text-align: justify;
+//   &:after {
+//     content: '';
+//     display: inline-block;
+//     width: 100%;
+//   }
+// }
+// //no such thing
+// .article-nav {
+//   text-decoration: none;
+//   font-size: 14px;
+//   text-transform: uppercase;
+//   font-weight: bold;
+//   border-bottom: 2px solid $colorHex;
+//   line-height: 19px;
+//   text-align: left;
+//   display: inline-block;
+// }
 
-.article-text {
-  position: relative;
-  display: none;
-  z-index: 2;
-  .rt & {
-    display: block;
-  }
-}
-.article-images {
-  img {
-    position: relative;
-    z-index: 2;
-  }
-  .rt & {
-    display: none;
-  }
-}
+    .article-text {
+      position: relative;
+      display: none;
+      z-index: 2;
+      .rt & {
+        display: block;
+      }
+      // for automaticaly generated spanned text
+      & .js__article-text-spanned{
+        cursor:text;
+      }
 
-.article-header {
-  margin-bottom: 50px;
-  cursor: text;
-  dt {
-    float: left;
-    font-size: .8em;
-    line-height: 28px;
-    max-width: 130px;
-    clear: left;
-  }
-  span {
-    border-bottom: 2px solid;
-  }
-  dd {
-    margin-left: 150px;
-    margin-bottom: 1em;
-  }
-}
-.article-info {
-  margin-top: 50px;
-  em {
-    float: left;
-    font-style: normal;
-    border-bottom: 2px solid;
-    font-size: .8em;
-    line-height: 28px;
-    clear: left;
-    max-width: 300px;
-  }
-  strong {
-    display: block;
-    margin-bottom: 1em;
-    margin-left: 320px;
-    font-weight: normal;
-  }
-  br {
-    display: none;
-  }
-}
+    }
+    .article-images {
+      img {
+        position: relative;
+        z-index: 2;
+      }
+      .rt & {
+        display: none;
+      }
+    }
+    // "Object:... at the top
+    .article-header {
+      margin-bottom: 50px;
+      cursor: text;
+      dt {
+        float: left;
+        font-size: .8em;
+        line-height: 28px;
+        max-width: 130px;
+        clear: left;
+      }
+      span {
+        border-bottom: 2px solid;
+      }
+      dd {
+        margin-left: 150px;
+        margin-bottom: 1em;
+      }
+    }
+    //  empty. makes a below margin
+    .article-info {
+      margin-top: 50px;
+      em {
+        float: left;
+        font-style: normal;
+        border-bottom: 2px solid;
+        font-size: .8em;
+        line-height: 28px;
+        clear: left;
+        max-width: 300px;
+      }
+      strong {
+        display: block;
+        margin-bottom: 1em;
+        margin-left: 320px;
+        font-weight: normal;
+      }
+      br {
+        display: none;
+      }
+    }

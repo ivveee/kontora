@@ -39,7 +39,7 @@
               <? endforeach ?>
             <? endif ?>
           </div>
-          <?= snippet('navbox') ?>
+          <!--?= snippet('navbox') ?-->
         </div>
       <!-- </div> -->
     </article>
