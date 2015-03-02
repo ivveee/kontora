@@ -32,6 +32,12 @@ $duration: 0.3s;
 $colorHex: #00f;
 $colorRgb: rgb(12, 40, 255);
 $colorRgba: rgba(12, 40, 255, .8);
+$colorHexBlueIndent: #2c41fc;
+
+$mainInfoWidth: 166.6px;
+$infoMarginWidth: 18px;
+$mainWidth:$mainInfoWidth + $infoMarginWidth;
+$addressWidth: 124px;
 
 @mixin image-size($path){
   width: image-width($path);

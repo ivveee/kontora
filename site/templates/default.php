@@ -4,7 +4,7 @@
   <div class="article-box js__article-box">
     <article class="article js__article">
       <!-- the "back" box. It takes 100% of screen and sends back to thumbnail menu-->
-      <a href="/" class="article-home js__article-home"></a><!--
+      <!--a href="/" class="article-home js__article-home"></a--><!--
       <div class="article-box"> -->
         <!-- article contents with titles -->
         <div class="article-in article-text js__article-text">

@@ -457,7 +457,6 @@ a {
 }
 
 .grid {
-  position: relative;
   position: fixed;
   top: 70px;
   right: 20px;
@@ -502,22 +501,23 @@ a {
 .info:last-child {
   margin-right: 0;
 }
-.info a {
-  border-bottom: 1px solid #2c41fc;
-  text-decoration: none;
-}
 
 .info-header {
   margin: 0 0 1px;
   text-transform: uppercase;
   font-weight: 600;
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 14.3px;
 }
 .info-header a {
-  border-bottom-width: 2px;
+  border-bottom: 2px solid #2c41fc;
+  text-decoration: none;
   line-height: 1.05;
   display: inline-block;
+}
+
+.main-info {
+  width: 166.6px;
 }
 
 .lang {
@@ -580,46 +580,6 @@ body.rt .switcher_text {
   left: 0;
 }
 
-.item:nth-child(1) {
-  top: 0;
-  left: 70%;
-}
-
-.item:nth-child(2) {
-  top: 0;
-  left: 80%;
-}
-
-.item:nth-child(3) {
-  top: 10%;
-  left: 80%;
-}
-
-.item:nth-child(4) {
-  top: 30%;
-  left: 10%;
-}
-
-.item:nth-child(5) {
-  top: 40%;
-  left: 30%;
-}
-
-.item:nth-child(6) {
-  top: 50%;
-  left: 50%;
-}
-
-.item:nth-child(7) {
-  top: 60%;
-  left: 70%;
-}
-
-.item:nth-child(8) {
-  top: 80%;
-  left: 30%;
-}
-
 .item {
   position: absolute;
   display: block;
@@ -629,6 +589,7 @@ body.rt .switcher_text {
           transition-duration: .2s;
   -webkit-transition-property: top, left;
           transition-property: top, left;
+  cursor: url('../images/cursor_FINAL.png?1424963742'), auto;
 }
 .item > span {
   position: absolute;
@@ -652,7 +613,6 @@ body.rt .switcher_text {
   box-shadow: 3px 3px 10px rgba(12, 40, 255, 0.8);
   color: #00f;
   opacity: 0;
-  cursor: url('../images/cursor_white.png?1424430312'), auto;
   -webkit-transition: opacity .3s;
           transition: opacity .3s;
 }
@@ -720,7 +680,7 @@ img.item-image {
 .article {
   margin: 0;
   font-size: 28px;
-  line-height: 1;
+  line-height: 1em;
   cursor: pointer;
 }
 .article h1 {
@@ -729,7 +689,9 @@ img.item-image {
   font-weight: normal;
 }
 .article p {
-  margin: 0 0 .5em;
+  display: block;
+  margin-bottom: 1em;
+  cursor: text;
 }
 .article img {
   display: block;
@@ -747,6 +709,31 @@ img.item-image {
 .article .article-holder img {
   cursor: default;
 }
+.article .article-holder dt {
+  float: left;
+  clear: left;
+  margin: 0 0 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-weight: bold;
+  font-size: 14.3px;
+  line-height: 1.2em;
+  max-width: 230px;
+  padding-top: 3px;
+  cursor: text;
+}
+.article .article-holder dt span {
+  border-bottom: 2px solid black;
+  text-decoration: none;
+  line-height: 1.05;
+}
+.article .article-holder dd {
+  cursor: text;
+  margin-left: 326.6px;
+  margin-bottom: 1em;
+  display: block;
+  margin-right: auto;
+}
 
 .article-home {
   position: absolute;
@@ -755,6 +742,10 @@ img.item-image {
   left: 0;
   height: 100%;
   z-index: 1;
+}
+
+.article-header {
+  cursor: text;
 }
 
 .article-text {
@@ -766,6 +757,7 @@ img.item-image {
   display: block;
 }
 .article-text .js__article-text-spanned {
+  display: block;
   cursor: text;
 }
 
@@ -777,43 +769,24 @@ img.item-image {
   display: none;
 }
 
-.article-header {
-  margin-bottom: 50px;
-  cursor: text;
-}
-.article-header dt {
-  float: left;
-  font-size: .8em;
-  line-height: 28px;
-  max-width: 130px;
-  clear: left;
-}
-.article-header span {
-  border-bottom: 2px solid;
-}
-.article-header dd {
-  margin-left: 150px;
-  margin-bottom: 1em;
-}
-
-.article-info {
+/*.article-info {
   margin-top: 50px;
-}
-.article-info em {
-  float: left;
-  font-style: normal;
-  border-bottom: 2px solid;
-  font-size: .8em;
-  line-height: 28px;
-  clear: left;
-  max-width: 300px;
-}
-.article-info strong {
-  display: block;
-  margin-bottom: 1em;
-  margin-left: 320px;
-  font-weight: normal;
-}
-.article-info br {
-  display: none;
-}
+  em {
+    float: left;
+    font-style: normal;
+    border-bottom: 2px solid;
+    font-size: .8em;
+    line-height: 28px;
+    clear: left;
+    max-width: 300px;
+  }
+  strong {
+    display: block;
+    margin-bottom: 1em;
+    margin-left: 320px;
+    font-weight: normal;
+  }
+  br {
+    display: none;
+  }
+}*/

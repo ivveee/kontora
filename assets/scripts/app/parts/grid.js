@@ -36,14 +36,14 @@ $(function() {
   // as background is clicked we fall back to home page
   // So grid objects should show "cursor:pointer" imitating a link
   // parse kirbytext'ed text, wrapping text between br's with <span>
-  $('.js__article-holder p').contents().filter(function(){
-    return this.nodeType === 3;
-  }).wrap('<span class="js__article-text-spanned"/>');
+  //$('.js__article-holder p').contents().filter(function(){
+  //  return this.nodeType === 3;
+  //}).wrap('<span class="js__article-text-spanned"/>');
   // if anything outside div is clicked - getting back to home
   $('.js__article-box').on('click', function(e){
     e.stopPropagation();
     //set to "return to home" to everything except text and image and header wrapped in dt and dd
-    if( !($(e.target).hasClass('js__article-text-spanned') || $(e.target).is('img') || 
+    if( !($(e.target).is('p') || $(e.target).is('img') || 
           $(e.target).is('dt') || $(e.target).is('dd') ) ) { 
         window.location.href = "/";
     }
@@ -81,11 +81,17 @@ $(function() {
 
     function recalc() {
                   //alert("recalc");
-
+      //Scale thumbnails if resolution is less than treshold
       windowWidth = $grid.width();
       windowHeight = $grid.height();
-      // itemWidth = parseInt(windowWidth/COLS);
-      // itemHeight = parseInt(windowHeight/ROWS);
+      var tresholdWindowWidth = 1920;
+      if(windowWidth < tresholdWindowWidth){
+        var scale = windowWidth/tresholdWindowWidth;
+        itemWidth = scale * itemWidth;
+        itemHeight = scale * itemHeight;
+      }
+      //itemWidth = parseInt(windowWidth/COLS);
+      //itemHeight = parseInt(windowHeight/ROWS);
       maxOffsetX = windowWidth - itemWidth;
       maxOffsetY = windowHeight - itemHeight - 61;
     }
@@ -96,7 +102,6 @@ $(function() {
       var rad = maxOffsetY*0.6;
       $items.each(function() {
         alpha+=Math.PI/8;
-        rad-=10;
         //read data from cookies
         var id = $(this).attr('id'),
           offsetLeft = $.cookie(id + '_left'), // ATTNT! In percent of window
@@ -122,33 +127,13 @@ $(function() {
       });
     }
 
-        // rearranges items spyral
-    function rearrangeSpyral() {
-      var alpha=0;
-      var rad=maxOffsetY*0.6;
-      $items.each(function() {
-        var id = $(this).attr('id');
-        var offsetLeft = (maxOffsetX/2 + Math.sin(alpha)*rad)/windowWidth * 100;
-        $.cookie(id + '_left', offsetLeft, { expires: 1 });
-        var offsetTop = ((maxOffsetY)/2 + Math.cos(alpha)*rad)/windowHeight * 100;
-        $.cookie(id + '_top', offsetTop, { expires: 1 });
-        alpha+=Math.PI/8;
-        rad-=5;
-        $(this).css({
-          width: itemWidth,
-          left: offsetLeft + '%',
-          top: offsetTop + '%'
-        });
-      });
-    }
-
     // aspetta per una seconda quando ha ricesto l'evento "resize" e ricalcolare i variabili
     $(window).on('resize', function() {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(function() {
         recalc();
         // rearrange();
-      }, 100)
+      }, 500)
     });
 
     // sets up thumbnails as jQuery UI items
@@ -186,10 +171,10 @@ $(function() {
     recalc();
     rearrange();
 
-    // in 0.3 seconds sets grid opacity to 1
+    // in 0.5 seconds sets grid opacity to 1
     setTimeout(function() {
       $grid.addClass('is__active');
-    }, 300);
+    }, 700);
   });
 
 })

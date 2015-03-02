@@ -4,6 +4,7 @@
 
   <title><?php echo html($site->title()) ?> - <?php echo html($page->title()) ?></title>
   <meta charset="utf-8" />
+  <meta name="pinterest" content="nohover"></meta>
 
   <?= js('//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js') ?>
   <?= js('//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js') ?>
@@ -29,7 +30,7 @@
       <div class="switcher switcher_image is__active"></div>
       <div class="switcher switcher_text"></div>
     </div>
-    <div class="info">
+    <div class="info main-info">
       <h3 class="info-header"><a class="js__rearrange" href="/"><?= l::get('kontora') ?></a>:</h3>
       <?= $site->phones() ?>
     </div>

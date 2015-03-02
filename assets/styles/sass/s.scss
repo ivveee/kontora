@@ -28,7 +28,6 @@ a {
   color: $colorHex;
 }
 .grid {
-  position: relative;
   position: fixed;
   top: 70px;
   right: 20px;
@@ -40,6 +39,20 @@ a {
   &.is__active {
     opacity: 1;
   }
+}
+//--------------------Underlined Title style
+@mixin underlined-title {
+  margin: 0 0 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-weight: bold;
+  font-size: 14.3px;
+}
+
+@mixin line-underlined-title($color) {
+  border-bottom: 2px solid $color;
+  text-decoration: none;
+  line-height: 1.05;
 }
 //--------------------Header
 .header {
@@ -61,7 +74,7 @@ a {
   //Info - Name, Address, mail
   .info {
     display: inline-block;
-    margin-right: 18px;
+    margin-right: $infoMarginWidth;
     vertical-align: top;
     font-size: 11px;
     line-height: .95;
@@ -69,25 +82,16 @@ a {
     &:last-child {
       margin-right: 0;
     }
-    a {
-      border-bottom: 1px solid #2c41fc;
-      text-decoration: none;
-      &:hover {
-        // border-bottom-color: $colorRgb;
-      }
-    }
   }
     .info-header {
-      margin: 0 0 1px;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-weight: bold;
-      font-size: 1.3em;
+      @include underlined-title;
       a {
-        border-bottom-width: 2px;
-        line-height: 1.05;
+        @include line-underlined-title($colorHexBlueIndent);
         display: inline-block;
       }
+    }
+    .main-info{
+      width: $mainInfoWidth;
     }
   //Language
   .lang {
@@ -137,7 +141,7 @@ a {
           background-image: image-url('icon_text.png');
         }
       }
-//----------------------Content block for grid and project page
+//Content block for grid and project page
 //It's children are always fixed that is why it's height collapses to 0
 .content {
   // No such thing as .index
@@ -146,17 +150,17 @@ a {
     top: 90px; right: 0; bottom: 0; left: 0;
   }
 }
-//---------Grid
+//----------------------Grid
   //Items within item class (oh my f god the guy teaches at the institue)
   //This simulates randomness
-  .item:nth-child(1) { top: 0; left: 70%;}
-  .item:nth-child(2) { top: 0; left: 80%; }
-  .item:nth-child(3) { top: 10%; left: 80%; }
-  .item:nth-child(4) { top: 30%; left: 10%; }
-  .item:nth-child(5) { top: 40%; left: 30%; }
-  .item:nth-child(6) { top: 50%; left: 50%; }
-  .item:nth-child(7) { top: 60%; left: 70%; }
-  .item:nth-child(8) { top: 80%; left: 30%; }
+  //.item:nth-child(1) { top: 0; left: 70%;}
+  //.item:nth-child(2) { top: 0; left: 80%; }
+  //.item:nth-child(3) { top: 10%; left: 80%; }
+  //.item:nth-child(4) { top: 30%; left: 10%; }
+  //.item:nth-child(5) { top: 40%; left: 30%; }
+  //.item:nth-child(6) { top: 50%; left: 50%; }
+  //.item:nth-child(7) { top: 60%; left: 70%; }
+  //.item:nth-child(8) { top: 80%; left: 30%; }
   //Item (=thumbnail)
   .item {
     position: absolute;
@@ -169,6 +173,7 @@ a {
     // background: #fff;
     transition-duration: .2s;
     transition-property: top, left;
+    cursor:image-url('cursor_FINAL.png'),auto;
     //oh my god! he uses perspective to switch modes
     & > span {
       position: absolute;
@@ -191,7 +196,6 @@ a {
       box-shadow: 3px 3px 10px $colorRgba;
       color: $colorHex;
       opacity: 0;
-      cursor:image-url('cursor_white.png'),auto;
       //animation of opacity
       transition: opacity .3s;
       .item:hover & {
@@ -248,7 +252,7 @@ a {
         box-shadow: 5px 5px 10px $colorHex;
       }
     }
-//---------Project page
+//----------------------Project page
 // article wrapper
 .article-box {
   position: fixed; // ATTNT
@@ -260,10 +264,9 @@ a {
   cursor: pointer;
 }
   .article {
-
     margin: 0;
     font-size: 28px;
-    line-height: 1;
+    line-height: 1em;
     cursor: pointer;
     h1 {
       font-size: 1em;
@@ -271,7 +274,9 @@ a {
       font-weight: normal;
     }
     p {
-      margin: 0 0 .5em;
+      display: block;
+      margin-bottom: 1em;
+      cursor: text;
     }
     img {
       display: block;
@@ -288,13 +293,27 @@ a {
       img {
         cursor: default;
       }
+      dt {
+        float: left;
+        clear: left;
+        @include underlined-title;
+        line-height: 1.2em;
+        max-width: 230px;
+        padding-top: 3px;
+        cursor:text;
+        span {
+          @include line-underlined-title(black);
+        }
+      }
+      dd {
+        cursor:text;
+        margin-left: $mainInfoWidth + $infoMarginWidth*2 + $addressWidth;
+        margin-bottom: 1em;
+        display: block;
+        margin-right: auto;
+      }
     }
   }
-    // sets cursor of images in "image mode" to default as it doesn't function as link
-    // everything else does
-    //.article-holder img {
-    //    cursor: default;
-    //  }
   // "back" button on background but doesn't work
   .article-home {
     position: absolute;
@@ -302,7 +321,58 @@ a {
     height: 100%;
     z-index: 1;
   }
-// .article-box {
+      // "Object:... at the top
+    .article-header {
+      //margin-bottom: 50px;
+      cursor: text;
+    }
+    .article-text {
+      position: relative;
+      display: none;
+      z-index: 2;
+      .rt & {
+        display: block;
+      }
+      // for automaticaly generated spanned text
+      & .js__article-text-spanned{
+        display: block;
+        cursor:text;
+        //margin-bottom: 0;
+      }
+
+    }
+    .article-images {
+      img {
+        position: relative;
+        z-index: 2;
+      }
+      .rt & {
+        display: none;
+      }
+    }
+    //  empty. makes a below margin
+    /*.article-info {
+      margin-top: 50px;
+      em {
+        float: left;
+        font-style: normal;
+        border-bottom: 2px solid;
+        font-size: .8em;
+        line-height: 28px;
+        clear: left;
+        max-width: 300px;
+      }
+      strong {
+        display: block;
+        margin-bottom: 1em;
+        margin-left: 320px;
+        font-weight: normal;
+      }
+      br {
+        display: none;
+      }
+    }*/
+    // .article-box {
 //   position: relative;
 //   height: 100%;
 //   overflow: auto;
@@ -331,67 +401,3 @@ a {
 //   text-align: left;
 //   display: inline-block;
 // }
-
-    .article-text {
-      position: relative;
-      display: none;
-      z-index: 2;
-      .rt & {
-        display: block;
-      }
-      // for automaticaly generated spanned text
-      & .js__article-text-spanned{
-        cursor:text;
-      }
-
-    }
-    .article-images {
-      img {
-        position: relative;
-        z-index: 2;
-      }
-      .rt & {
-        display: none;
-      }
-    }
-    // "Object:... at the top
-    .article-header {
-      margin-bottom: 50px;
-      cursor: text;
-      dt {
-        float: left;
-        font-size: .8em;
-        line-height: 28px;
-        max-width: 130px;
-        clear: left;
-      }
-      span {
-        border-bottom: 2px solid;
-      }
-      dd {
-        margin-left: 150px;
-        margin-bottom: 1em;
-      }
-    }
-    //  empty. makes a below margin
-    .article-info {
-      margin-top: 50px;
-      em {
-        float: left;
-        font-style: normal;
-        border-bottom: 2px solid;
-        font-size: .8em;
-        line-height: 28px;
-        clear: left;
-        max-width: 300px;
-      }
-      strong {
-        display: block;
-        margin-bottom: 1em;
-        margin-left: 320px;
-        font-weight: normal;
-      }
-      br {
-        display: none;
-      }
-    }
