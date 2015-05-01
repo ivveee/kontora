@@ -168,12 +168,15 @@ $(function() {
       rearrange(true);
     })
 
+
+    $(window).load( function(){
     recalc();
     rearrange();
+  $grid.addClass('is__active');});
 
     // in 0.5 seconds sets grid opacity to 1
     setTimeout(function() {
-      $grid.addClass('is__active');
+      //$grid.addClass('is__active');
     }, 700);
   });
 

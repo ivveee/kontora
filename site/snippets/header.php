@@ -5,6 +5,11 @@
   <title><?php echo html($site->title()) ?> - <?php echo html($page->title()) ?></title>
   <meta charset="utf-8" />
   <meta name="pinterest" content="nohover"></meta>
+  <script >
+    if (screen.width <= 800) {
+      window.location = "<?php echo html($pages->find('mobile')->url())?>" ;
+    }
+  </script>
 
   <?= js('//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js') ?>
   <?= js('//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js') ?>

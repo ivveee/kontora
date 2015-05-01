@@ -36,7 +36,7 @@ $colorHexBlueIndent: #2c41fc;
 
 $mainInfoWidth: 166.6px;
 $infoMarginWidth: 18px;
-$mainWidth:$mainInfoWidth + $infoMarginWidth;
+$mainWidth:$mainInfoWidth;// + $infoMarginWidth;
 $addressWidth: 124px;
 
 @mixin image-size($path){

@@ -729,7 +729,7 @@ img.item-image {
 }
 .article .article-holder dd {
   cursor: text;
-  margin-left: 326.6px;
+  margin-left: 184.6px;
   margin-bottom: 1em;
   display: block;
   margin-right: auto;
@@ -790,3 +790,15 @@ img.item-image {
     display: none;
   }
 }*/
+.mobile .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  background: #fff;
+}
+.mobile .social {
+  float: left;
+  font-size: 300px;
+}

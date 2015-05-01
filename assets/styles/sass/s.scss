@@ -307,7 +307,7 @@ a {
       }
       dd {
         cursor:text;
-        margin-left: $mainInfoWidth + $infoMarginWidth*2 + $addressWidth;
+        margin-left: $mainInfoWidth + $infoMarginWidth;
         margin-bottom: 1em;
         display: block;
         margin-right: auto;
@@ -401,3 +401,19 @@ a {
 //   text-align: left;
 //   display: inline-block;
 // }
+
+.mobile{
+  .header{
+      position: fixed; // ATTNT
+      top: 0;
+      left: 0; 
+      right: 0;
+      padding: 10px 20px;
+      background: #fff;
+  }
+  .social {
+    float: left;
+    font-size: 300px;
+  }
+
+}
